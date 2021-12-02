@@ -9,13 +9,13 @@ router.get("/" , async (req, res) => {
         const employees = await Employee.find();
         res.json(employees);
     }catch(err){
-        res.json({message: err})
+        res.json({message: err, success: false})
     }
 });
 
 router.post("/" , async (req, res) => {
     const {error} = validateEmployee(req.body)
-    if(error) return res.status(400).send(error);
+    if(error) return res.status(400).json({message: error.details[0].message, success: false});
 
     let count = fs.readFileSync('./models/counter.txt', 'utf8');
     const employee = new Employee({
@@ -28,9 +28,9 @@ router.post("/" , async (req, res) => {
     
     try{
         const savedEmployee = await employee.save();
-        res.json(savedEmployee);
+        res.json({message: `Id: ${employee.id}\nEmployee added successfully.`, success: true});
     }catch(err){
-        res.json({message: err})
+        res.json({message: err, success: false})
     }
 });
 
@@ -39,13 +39,13 @@ router.get("/:id" , async (req, res) => {
         const employee = await Employee.find({"id": parseInt(req.params.id)});
         res.json(employee);
     }catch(err){
-        res.json({message: err});
+        res.json({message: err, success: false});
     }
 });
 
 router.put("/:id" , async (req, res) => {
     const {error} = validateEmployee(req.body);
-    if(error) return res.status(400).send(error);
+    if(error) return res.status(400).json({message: error.details[0].message, success: false});
     
     try{
         const updateEmployee = await Employee.updateOne(
@@ -54,18 +54,18 @@ router.put("/:id" , async (req, res) => {
                     lastName: req.body.lastName, 
                     emailId: req.body.emailId}}
         );
-        res.json(updateEmployee);
+        res.json({message: "Employee update Successfully", success: true});
     }catch(err){
-        res.json({message: err});
+        res.json({message: err, success: false});
     }
 });
 
 router.delete("/:id" , async (req, res) => {
     try{
         const removeEmployee = await Employee.remove({"id": parseInt(req.params.id)});
-        res.json(removeEmployee);
+        res.json({message: "Successfully Deleted", success: true});
     }catch(err){
-        res.json({message: err});
+        res.json({message: err, success: false});
     }
 });
 
