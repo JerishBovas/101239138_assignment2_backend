@@ -1,0 +1,39 @@
+{
+  "name": "101239138_assignment2_backend",
+  "version": "1.0.0",
+  "description": "Backend of assignment 2 full stack project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerishbovas/101239138_assignment2_backend.git"
+  },
+  "keywords": [
+    "full",
+    "stack",
+    "backend",
+    "nodeJS",
+    "express",
+    "MongoDB"
+  ],
+  "author": "Jerish Bradly Bovas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jerishbovas/101239138_assignment2_backend/issues"
+  },
+  "homepage": "https://github.com/jerishbovas/101239138_assignment2_backend#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "joi": "^17.5.0",
+    "mongodb": "^4.2.1",
+    "mongoose": "^6.0.14"
+  }
+}
