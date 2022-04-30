@@ -2,9 +2,9 @@
   "name": "101239138_assignment2_backend",
   "version": "1.0.0",
   "description": "Backend of assignment 2 full stack project",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "joi": "^17.5.0",

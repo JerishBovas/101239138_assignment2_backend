@@ -28,7 +28,7 @@ router.post("/" , async (req, res) => {
     
     try{
         const savedEmployee = await employee.save();
-        res.json({message: `Id: ${employee.id}\nEmployee added successfully.`, success: true});
+        res.json({id: employee.id, message: `Employee added successfully.`, success: true});
     }catch(err){
         res.json({message: err, success: false})
     }
